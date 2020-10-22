@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+wug2.txt
+=======
+This is not a wug.
+>>>>>>>

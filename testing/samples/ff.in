@@ -1,0 +1,60 @@
+ 1. # Create two branches and merge other into master with a merge conflict.
+ 2. I setup2.inc
+ 3. > branch other
+ 4. <<<
+ 5. + h.txt wug2.txt
+ 6. > add h.txt
+ 7. <<<
+ 8. > rm g.txt
+ 9. <<<
+10. + f.txt wug2.txt
+11. > add f.txt
+12. <<<
+13. > commit "Add h.txt, remove g.txt, and change f.txt"
+14. <<<
+15. > checkout other
+16. <<<
+17. + f.txt notwug.txt
+18. > add f.txt
+19. <<<
+20. + k.txt wug3.txt
+21. > add k.txt
+22. <<<
+23. > commit "Add k.txt and modify f.txt"
+24. <<<
+25. > checkout master
+26. <<<
+27. > log
+28. ===
+29. ${COMMIT_HEAD}
+30. ${ARBLINES}
+31. <<<*
+32. D MASTER_HEAD "${1}"
+33. > merge other
+34. Encountered a merge conflict.
+35. <<<
+36. * g.txt
+37. = h.txt wug2.txt
+38. = k.txt wug3.txt
+39. = f.txt conflict1.txt
+40. > log
+41. ${COMMIT_LOG}
+42. ===
+43. commit ${MASTER_HEAD}
+44. ${ARBLINES}
+45. <<<*
+46. > status
+47. === Branches ===
+48. \*master
+49. other
+50. 
+51. === Staged Files ===
+52. 
+53. === Removed Files ===
+54. 
+55. === Modifications Not Staged For Commit ===
+56. 
+57. === Untracked Files ===
+58. 
+59. <<<*
+60. 
